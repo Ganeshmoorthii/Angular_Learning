@@ -1,0 +1,14 @@
+@for (user of UserDetails; track $index) {
+  <mat-card class="example-card" appearance="outlined">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>{{ user.fullName }}</mat-card-title>
+      <mat-card-subtitle>{{ user.role }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-actions>
+      <button matButton class="btn btn-primary" (click)="onViewClick(user)">
+        View
+      </button>
+    </mat-card-actions>
+  </mat-card>
+}

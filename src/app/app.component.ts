@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterOutlet, RouterLinkWithHref, Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -8,5 +8,19 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'Frontend';
+  constructor(private router: Router) {}
+
+
+  navigateToHome() {
+    this.router.navigateByUrl('/');
+  }
+
+  navigateToLogin() {
+    this.router.navigateByUrl('/login');
+  }
+
+
+  navigateToRegister() {
+    this.router.navigateByUrl('/register');
+  }
 }

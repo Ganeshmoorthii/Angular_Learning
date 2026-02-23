@@ -1,0 +1,76 @@
+<app-header></app-header>
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <!-- ID Column -->
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef>ID</th>
+    <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+  </ng-container>
+
+  <!-- Full Name Column -->
+  <ng-container matColumnDef="fullName">
+    <th mat-header-cell *matHeaderCellDef>Full Name</th>
+    <td mat-cell *matCellDef="let element">{{ element.fullName }}</td>
+  </ng-container>
+
+  <!-- Email Column -->
+  <ng-container matColumnDef="email">
+    <th mat-header-cell *matHeaderCellDef>Email</th>
+    <td mat-cell *matCellDef="let element">{{ element.email }}</td>
+  </ng-container>
+
+  <!-- Password Column -->
+  <ng-container matColumnDef="password">
+    <th mat-header-cell *matHeaderCellDef>Password</th>
+    <td mat-cell *matCellDef="let element">{{ element.password }}</td>
+  </ng-container>
+
+  <!-- Role Column -->
+  <ng-container matColumnDef="role">
+    <th mat-header-cell *matHeaderCellDef>Role</th>
+    <td mat-cell *matCellDef="let element">{{ element.role }}</td>
+  </ng-container>
+
+  <!-- Contact Numbers Column -->
+  <ng-container matColumnDef="contactNumbers">
+    <th mat-header-cell *matHeaderCellDef>Contact Numbers</th>
+    <td mat-cell *matCellDef="let element">
+      @for (contact of element.contactNumbers; track $index) {
+        <div>{{ contact.number }}</div>
+      }
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="editOptions">
+    <th mat-header-cell *matHeaderCellDef>Edit Options</th>
+    <td mat-cell *matCellDef="let element">
+      @if (isAdmin()) {
+        <button mat-button color="primary" (click)="editUser(element)">
+          Edit
+        </button>
+        <button mat-button color="warn" (click)="deleteUser(element.id)">
+          Delete
+        </button>
+      } @else {
+        <span class="text-muted text-danger">No permissions</span>
+      }
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>
+
+<section
+  class="mt-4 d-flex flex-column justify-content-center align-items-center"
+>
+  <h1>Users List</h1>
+  <app-display-names
+    [UserDetails]="dataSource"
+    (viewUser)="handleViewUser($event)"
+  >
+  </app-display-names>
+
+  <ng-container *for="let user of dataSource; trackBy: trackByUser">
+  </ng-container>
+</section>
