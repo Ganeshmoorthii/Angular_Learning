@@ -1,4 +1,7 @@
-<app-header></app-header>
+<!-- Example for Ng Content -->
+<app-header>
+  <p class="text-center">Welcome to the Dashboard</p>
+</app-header>
 
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
   <!-- ID Column -->
@@ -71,6 +74,52 @@
   >
   </app-display-names>
 
-  <ng-container *for="let user of dataSource; trackBy: trackByUser">
+  <div class="mt-4 d-flex flex-wrap justify-content-center gap-3">
+    <ng-container *ngFor="let user of dataSource; trackBy: trackByUser">
+       <ng-container *ngIf="user.fullName == 'Ganesha Moorthi M'">
+      <div class="card mb-3" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">{{ user.fullName }}</h5>
+          <p class="card-text">{{ user.email }}</p>
+          <button
+            class="btn btn-primary"
+            (click)="handleViewUser(user)"
+          >
+            View Details
+          </button>
+        </div>
+      </div>
+       </ng-container>
   </ng-container>
+  </div>
+
+  <!-- Exmaple 1: -->
+  <!-- Learn the ng Template  -->
+  <ng-template #myTemplate>
+    <h1>Hello World from Template!</h1>
+    <p>This is a paragraph.</p>
+  </ng-template>
+  <!-- ngTemplateOutlet Directive  -->
+  <div *ngTemplateOutlet="myTemplate"></div>
+
+  <!-- Example 2: -->
+  <div>
+    <ng-template #userTemplate let-user>
+      <h2>{{ user.fullName }}</h2>
+      <p>Email: {{ user.email }}</p>
+    </ng-template>
+
+    <div *ngFor="let user of dataSource; trackBy: trackByUser">
+      <ng-container *ngTemplateOutlet="userTemplate; context: { $implicit: user }"></ng-container>
+    </div>
+  </div>
+
+  <!-- Learn ng Comtainer -->
+   <ng-container *ngIf="isAdmin()">
+     <p>Admin user is viewing this content.</p>
+   </ng-container>
+
+   <!-- Learn Ng Content -->
+   
+
 </section>

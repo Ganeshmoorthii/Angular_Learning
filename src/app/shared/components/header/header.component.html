@@ -9,6 +9,11 @@
         <li class="nav-item">
           <a class="nav-link active" routerLink="/">Home</a>
         </li>
+        <li class="nav-item">
+          <ng-content></ng-content> <!-- Example for Ng Content -->
+          <!-- <ng-content select=".selector"></ng-content> -->
+          
+        </li>
       </ul>
       <form class="d-flex" role="search">
         <button class="btn btn-outline-success" type="button" (click)="handleAuthAction()">

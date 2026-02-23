@@ -1,4 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
@@ -7,17 +8,20 @@ import { User } from '../../../core/models/user.model';
 import { HeaderComponent } from '../../../shared/components/header/header.component';
 import { RegisterPageComponent } from '../../auth/register-page/register-page.component';
 import { DisplayNamesComponent } from '../display-names/display-names.component';
+import { ɵEmptyOutletComponent } from "@angular/router";
 
 @Component({
   selector: 'app-home-page',
   standalone: true,
   imports: [
+    CommonModule,
     MatTableModule,
     MatButtonModule,
     MatDialogModule,
     HeaderComponent,
     DisplayNamesComponent,
-  ],
+    ɵEmptyOutletComponent
+],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.scss',
 })
@@ -38,6 +42,10 @@ export class HomePageComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadUserData();
+  }
+
+  trackByUser(index: number, user: User): string {
+    return user.id;
   }
 
   loadUserData() {
@@ -80,7 +88,7 @@ export class HomePageComponent implements OnInit {
       });
     }
   }
-  handleViewUser(user: User) {
+    handleViewUser(user: User) {
     console.log('Parent received user to view:', user);
   }
 }
