@@ -19,6 +19,11 @@ import {
 })
 export class DisplayPageComponent implements OnInit {
   ngOnInit(): void {
+    // const observable = new Observable((sub) => { // Producer function - called for each subscriber - unicast observable
+    //   sub.next(1);
+    //   sub.next(2); 
+    //   sub.next(3);
+    // });
     // const subject = new Subject(); // Multicast to all subscribers
     // const subject = new BehaviorSubject<number>(100); // Latest value to new subscribers
     // const subject = new ReplaySubject<number>(2,1000); // Buffer size and window time for new subscribers
