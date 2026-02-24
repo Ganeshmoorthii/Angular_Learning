@@ -1,4 +1,11 @@
-import { Component, inject, OnInit } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  inject,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
@@ -10,7 +17,8 @@ import { RegisterPageComponent } from '../../auth/register-page/register-page.co
 import { DisplayNamesComponent } from '../display-names/display-names.component';
 // import { ɵEmptyOutletComponent } from "@angular/router";
 import { ChildComponent } from '../child/child.component';
-import { TestComponent } from "../test/test.component";
+import { TestComponent } from '../test/test.component';
+import { fromEvent } from 'rxjs';
 
 @Component({
   selector: 'app-home-page',
@@ -23,15 +31,14 @@ import { TestComponent } from "../test/test.component";
     HeaderComponent,
     DisplayNamesComponent,
     ChildComponent,
-    TestComponent
-],
+    TestComponent,
+  ],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.scss',
 })
-export class HomePageComponent implements OnInit {
+export class HomePageComponent implements OnInit, AfterViewInit {
   private authService = inject(AuthService);
   private dialog = inject(MatDialog);
-
 
   displayedColumns: string[] = [
     'id',
@@ -44,8 +51,27 @@ export class HomePageComponent implements OnInit {
   ];
   dataSource: User[] = [];
 
+  @ViewChild('createButton') createButton!: ElementRef;
+
+  buttonClicked() {
+    fromEvent(this.createButton.nativeElement, 'click').subscribe((data) => {
+      console.log('Create button clicked!', data);
+      this.showItem();
+    });
+  }
+
+  showItem() {
+    let div = document.createElement('div');
+    div.innerText = 'Item';
+    document.getElementById('container')!.appendChild(div);
+  }
+
   ngOnInit(): void {
     this.loadUserData();
+  }
+
+  ngAfterViewInit() {
+    this.buttonClicked();
   }
 
   trackByUser(index: number, user: User): string {
@@ -92,7 +118,7 @@ export class HomePageComponent implements OnInit {
       });
     }
   }
-    handleViewUser(user: User) {
+  handleViewUser(user: User) {
     console.log('Parent received user to view:', user);
   }
 }

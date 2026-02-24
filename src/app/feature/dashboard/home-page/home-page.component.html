@@ -115,20 +115,30 @@
   </div> -->
 
   <!-- Learn ng Comtainer -->
-   <!-- <ng-container *ngIf="isAdmin()">
+  <!-- <ng-container *ngIf="isAdmin()">
      <p>Admin user is viewing this content.</p>
    </ng-container> -->
-   
-   <!-- Examples for ContentChild() and ContentChildren() -->
-   <app-child>
-     <h5>Child Component</h5>
-     <p #paragraph>1. This content will be projected into the child component.</p>
-     <p #paragraph>2. This content will be projected into the child component.</p>
-     <p #paragraph>3. This content will be projected into the child component.</p>
-     <app-test [userName]="'Ganesh'"></app-test>
-     <app-test [userName]="'Ramesh'"></app-test>
-     <app-test [userName]="'Suresh'"></app-test>
-     <app-test [userName]="'Dinesh'"></app-test>
-   </app-child>
 
+  <!-- Examples for ContentChild() and ContentChildren() -->
+  <app-child>
+    <h5>Child Component</h5>
+    <p #paragraph>
+      1. This content will be projected into the child component.
+    </p>
+    <p #paragraph>
+      2. This content will be projected into the child component.
+    </p>
+    <p #paragraph>
+      3. This content will be projected into the child component.
+    </p>
+    <app-test [userName]="'Ganesh'"></app-test>
+    <app-test [userName]="'Ramesh'"></app-test>
+    <app-test [userName]="'Suresh'"></app-test>
+    <app-test [userName]="'Dinesh'"></app-test>
+  </app-child>
 </section>
+
+<ng-container>
+  <div class="data-list" id="container"></div>
+  <button #createButton class="btn btn-primary">Create Button</button>
+</ng-container>
