@@ -12,6 +12,7 @@ import {
   AsyncSubject,
   BehaviorSubject,
   forkJoin,
+  mergeMap,
   Observable,
   of,
   ReplaySubject,
@@ -49,7 +50,7 @@ export class DisplayPageComponent implements OnInit {
 
     this.searchControl.valueChanges
       .pipe(
-        switchMap((search: string) => {
+        mergeMap((search: string) => {
           return this.http.get(
             'https://dummyjson.com/products/search?q=' + search,
           );
