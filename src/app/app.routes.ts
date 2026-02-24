@@ -3,6 +3,7 @@ import { LoginPageComponent } from './feature/auth/login-page/login-page.compone
 import { HomePageComponent } from './feature/dashboard/home-page/home-page.component';
 import { RegisterPageComponent } from './feature/auth/register-page/register-page.component';
 import { authGuard } from './core/guards/auth.guard';
+import { DisplayPageComponent } from './feature/dashboard/display-page/display-page.component';
 
 export const routes: Routes = [
   {
@@ -16,6 +17,11 @@ export const routes: Routes = [
   {
     path: '',
     component: HomePageComponent,
+    canActivate: [authGuard],
+  },
+  {
+    path: 'dashboard',
+    component: DisplayPageComponent,
     canActivate: [authGuard],
   },
   { path: '**', redirectTo: '' },
