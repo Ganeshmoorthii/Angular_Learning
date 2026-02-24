@@ -8,7 +8,9 @@ import { User } from '../../../core/models/user.model';
 import { HeaderComponent } from '../../../shared/components/header/header.component';
 import { RegisterPageComponent } from '../../auth/register-page/register-page.component';
 import { DisplayNamesComponent } from '../display-names/display-names.component';
-import { ɵEmptyOutletComponent } from "@angular/router";
+// import { ɵEmptyOutletComponent } from "@angular/router";
+import { ChildComponent } from '../child/child.component';
+import { TestComponent } from "../test/test.component";
 
 @Component({
   selector: 'app-home-page',
@@ -20,7 +22,8 @@ import { ɵEmptyOutletComponent } from "@angular/router";
     MatDialogModule,
     HeaderComponent,
     DisplayNamesComponent,
-    ɵEmptyOutletComponent
+    ChildComponent,
+    TestComponent
 ],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.scss',
@@ -28,6 +31,7 @@ import { ɵEmptyOutletComponent } from "@angular/router";
 export class HomePageComponent implements OnInit {
   private authService = inject(AuthService);
   private dialog = inject(MatDialog);
+
 
   displayedColumns: string[] = [
     'id',

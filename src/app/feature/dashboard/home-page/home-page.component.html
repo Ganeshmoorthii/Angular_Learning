@@ -73,8 +73,8 @@
     (viewUser)="handleViewUser($event)"
   >
   </app-display-names>
-
-  <div class="mt-4 d-flex flex-wrap justify-content-center gap-3">
+  <!-- Example for Ng Template and Ng Template Outlet -->
+  <!-- <div class="mt-4 d-flex flex-wrap justify-content-center gap-3">
     <ng-container *ngFor="let user of dataSource; trackBy: trackByUser">
        <ng-container *ngIf="user.fullName == 'Ganesha Moorthi M'">
       <div class="card mb-3" style="width: 18rem;">
@@ -91,19 +91,19 @@
       </div>
        </ng-container>
   </ng-container>
-  </div>
+  </div> -->
 
   <!-- Exmaple 1: -->
   <!-- Learn the ng Template  -->
-  <ng-template #myTemplate>
+  <!-- <ng-template #myTemplate>
     <h1>Hello World from Template!</h1>
     <p>This is a paragraph.</p>
-  </ng-template>
+  </ng-template> -->
   <!-- ngTemplateOutlet Directive  -->
-  <div *ngTemplateOutlet="myTemplate"></div>
+  <!-- <div *ngTemplateOutlet="myTemplate"></div> -->
 
   <!-- Example 2: -->
-  <div>
+  <!-- <div>
     <ng-template #userTemplate let-user>
       <h2>{{ user.fullName }}</h2>
       <p>Email: {{ user.email }}</p>
@@ -112,14 +112,23 @@
     <div *ngFor="let user of dataSource; trackBy: trackByUser">
       <ng-container *ngTemplateOutlet="userTemplate; context: { $implicit: user }"></ng-container>
     </div>
-  </div>
+  </div> -->
 
   <!-- Learn ng Comtainer -->
-   <ng-container *ngIf="isAdmin()">
+   <!-- <ng-container *ngIf="isAdmin()">
      <p>Admin user is viewing this content.</p>
-   </ng-container>
-
-   <!-- Learn Ng Content -->
+   </ng-container> -->
    
+   <!-- Examples for ContentChild() and ContentChildren() -->
+   <app-child>
+     <h5>Child Component</h5>
+     <p #paragraph>1. This content will be projected into the child component.</p>
+     <p #paragraph>2. This content will be projected into the child component.</p>
+     <p #paragraph>3. This content will be projected into the child component.</p>
+     <app-test [userName]="'Ganesh'"></app-test>
+     <app-test [userName]="'Ramesh'"></app-test>
+     <app-test [userName]="'Suresh'"></app-test>
+     <app-test [userName]="'Dinesh'"></app-test>
+   </app-child>
 
 </section>
