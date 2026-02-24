@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { NewTaskComponent } from '../new-task/new-task.component';
 import { ShowTaskComponent } from '../show-task/show-task.component';
-import { BehaviorSubject, Subject } from 'rxjs';
+import { BehaviorSubject, ReplaySubject, Subject } from 'rxjs';
 
 @Component({
   selector: 'app-display-page',
@@ -14,7 +14,12 @@ import { BehaviorSubject, Subject } from 'rxjs';
 export class DisplayPageComponent implements OnInit {
   ngOnInit(): void {
     // const subject = new Subject();
-    const subject = new BehaviorSubject<number>(100);
+    // const subject = new BehaviorSubject<number>(100);
+    const subject = new ReplaySubject<number>(2,1000);
+    subject.next(1);
+    subject.next(2);
+    subject.next(3);
+
     //Subscriber 1
     subject.subscribe((data) => {
       console.log('Subscriber 1:' + data);
