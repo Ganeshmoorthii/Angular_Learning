@@ -1,6 +1,11 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import {
+  Form,
+  FormControl,
+  FormsModule,
+  ReactiveFormsModule,
+} from '@angular/forms';
 import { NewTaskComponent } from '../new-task/new-task.component';
 import { ShowTaskComponent } from '../show-task/show-task.component';
 import {
@@ -11,12 +16,19 @@ import {
   of,
   ReplaySubject,
   Subject,
+  switchMap,
 } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-display-page',
-  imports: [CommonModule, FormsModule, NewTaskComponent, ShowTaskComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    NewTaskComponent,
+    ShowTaskComponent,
+    ReactiveFormsModule,
+  ],
   templateUrl: './display-page.component.html',
   styleUrl: './display-page.component.scss',
 })
@@ -24,20 +36,42 @@ export class DisplayPageComponent implements OnInit {
   stateData$ = of(['Mp', 'MH', 'Goa']);
   cityData$ = of(['Pune', 'Nagpur', 'Mumbai', 'Solapur']);
   http = inject(HttpClient);
+
+  searchControl: FormControl = new FormControl('');
   constructor() {
+    // this.searchControl.valueChanges.subscribe((search: string) => {
+    //   this.http
+    //     .get('https://dummyjson.com/products/search?q=' + search)
+    //     .subscribe((res: any) => {
+    //       console.log('User res' + JSON.stringify(res));
+    //     });
+    // });
+
+    this.searchControl.valueChanges
+      .pipe(
+        switchMap((search: string) => {
+          return this.http.get(
+            'https://dummyjson.com/products/search?q=' + search,
+          );
+        }),
+      )
+      .subscribe((res: any) => {
+        console.log('User res' + JSON.stringify(res));
+      });
+
     const $users = this.http.get('https://jsonplaceholder.typicode.com/users');
     const $posts = this.http.get('https://jsonplaceholder.typicode.com/posts');
     forkJoin([$users, $posts]).subscribe((res: any) => {
-      debugger;
+      // debugger;
     });
     forkJoin([this.stateData$, this.cityData$]).subscribe((res: any) => {
-      debugger;
+      // debugger;
     });
     this.stateData$.subscribe((res: any) => {
-      debugger;
+      // debugger;
     });
     this.cityData$.subscribe((res: any) => {
-      debugger;
+      // debugger;
     });
   }
 
