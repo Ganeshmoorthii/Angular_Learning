@@ -26,8 +26,8 @@ import { HttpClient } from '@angular/common/http';
   imports: [
     CommonModule,
     FormsModule,
-    NewTaskComponent,
-    ShowTaskComponent,
+    // NewTaskComponent,
+    // ShowTaskComponent,
     ReactiveFormsModule,
   ],
   templateUrl: './display-page.component.html',

@@ -4,12 +4,11 @@ import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../core/services/auth.service';
 
-
 @Component({
   selector: 'app-login-page-template',
   imports: [FormsModule, CommonModule],
   templateUrl: './login-page-template.component.html',
-  styleUrl: './login-page-template.component.scss'
+  styleUrl: './login-page-template.component.scss',
 })
 export class LoginPageTemplateComponent {
   // Login Object for Template Driven Forms
@@ -19,24 +18,37 @@ export class LoginPageTemplateComponent {
   };
   errorMessage: string = '';
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+  ) {}
+
+  get email() {
+    return this.LoginData.email;
+  }
+  get password() {
+    return this.LoginData.password;
+  }
+
 
   onSubmit() {
-    if(this.LoginData.email && this.LoginData.password) {
-      this.authService.login(this.LoginData.email, this.LoginData.password).subscribe({
-        next: (success) => {
-          if (success) {
-            this.errorMessage = '';
-            this.router.navigate(['/']);
-          } else {
-            this.errorMessage = 'Invalid email or password';
-          }
-        },
-        error: () => {
-          this.errorMessage =
-            'An error occurred during login. Please try again.';
-        },
-      });
+    if (this.LoginData.email && this.LoginData.password) {
+      this.authService
+        .login(this.LoginData.email, this.LoginData.password)
+        .subscribe({
+          next: (success) => {
+            if (success) {
+              this.errorMessage = '';
+              this.router.navigate(['/']);
+            } else {
+              this.errorMessage = 'Invalid email or password';
+            }
+          },
+          error: () => {
+            this.errorMessage =
+              'An error occurred during login. Please try again.';
+          },
+        });
     } else {
       this.errorMessage = 'Please fill in all required fields';
     }

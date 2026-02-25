@@ -21,11 +21,11 @@
             email
           />
         </div>
-        @if (loginForm.submitted && loginForm.controls['email']?.touched && loginForm.controls['email']?.errors){
-          <span class="text-danger" *ngIf="loginForm.controls['email']?.errors?.['required']"
+        @if (loginForm.submitted && email?.touched && email?.errors){
+          <span class="text-danger" *ngIf="email?.errors?.['required']"
             >Email is required</span
           >
-          <span class="text-danger" *ngIf="loginForm.controls['email']?.errors?.['email']"
+          <span class="text-danger" *ngIf="email?.errors?.['email']"
             >Invalid email format</span
           >
         }
@@ -41,15 +41,15 @@
           [(ngModel)]="LoginData.password"
           required
         />
-        @if (loginForm.submitted && loginForm.controls['password']?.errors) {
-          <span class="text-danger" *ngIf="loginForm.controls['password']?.errors?.['required']"
+        @if (loginForm.submitted && password?.errors) {
+          <span class="text-danger" *ngIf="password?.errors?.['required']"
             >Password is required</span
           >
         }
       </div>
       <button
         type="submit"
-        class="btn btn-primary mt-3"
+        class="btn btn-primary mt-3" 
       >
         Login
       </button>
