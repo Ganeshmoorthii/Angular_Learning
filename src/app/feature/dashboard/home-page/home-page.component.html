@@ -37,7 +37,13 @@
   <!-- Register Time Column -->
   <ng-container matColumnDef="registerTimestamp">
     <th mat-header-cell *matHeaderCellDef>Register Time</th>
-    <td mat-cell *matCellDef="let element">{{ element.registerTimestamp }}</td>
+    <td mat-cell *matCellDef="let element">{{ element.registerTimestamp | timestamp }}</td>
+  </ng-container>
+
+  <!-- Register Ago Column -->
+  <ng-container matColumnDef="registerAgo">
+    <th mat-header-cell *matHeaderCellDef></th>
+    <td mat-cell *matCellDef="let element">{{ element.registerTimestamp | timeago }}</td>
   </ng-container>
 
   <!-- Contact Numbers Column -->
@@ -126,7 +132,7 @@
    </ng-container> -->
 
   <!-- Examples for ContentChild() and ContentChildren() -->
-  <app-child>
+  <!-- <app-child>
     <h5>Child Component</h5>
     <p #paragraph>
       1. This content will be projected into the child component.
@@ -141,10 +147,10 @@
     <app-test [userName]="'Ramesh'"></app-test>
     <app-test [userName]="'Suresh'"></app-test>
     <app-test [userName]="'Dinesh'"></app-test>
-  </app-child>
+  </app-child> -->
 </section>
 
-<ng-container>
+<!-- <ng-container>
   <div class="data-list" id="container"></div>
   <button #createButton class="btn btn-primary">Create Button</button>
-</ng-container>
+</ng-container> -->

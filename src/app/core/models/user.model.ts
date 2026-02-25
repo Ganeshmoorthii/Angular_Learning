@@ -18,5 +18,6 @@ export interface RegisterRequest {
   password: string;
   role: string;
   registerTimestamp: string;
+  registerAgo?: string;
   contactNumbers: string[];
 }

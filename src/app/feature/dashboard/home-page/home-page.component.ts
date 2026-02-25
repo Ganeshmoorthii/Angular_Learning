@@ -19,6 +19,8 @@ import { DisplayNamesComponent } from '../display-names/display-names.component'
 import { ChildComponent } from '../child/child.component';
 import { TestComponent } from '../test/test.component';
 import { fromEvent } from 'rxjs';
+import { TimestampPipe } from '../../../shared/pipes/timestamp.pipe';
+import { TimeagoPipe } from '../../../shared/pipes/timeago.pipe';
 
 @Component({
   selector: 'app-home-page',
@@ -32,6 +34,8 @@ import { fromEvent } from 'rxjs';
     DisplayNamesComponent,
     ChildComponent,
     TestComponent,
+    TimestampPipe,
+    TimeagoPipe,
   ],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.scss',
@@ -46,6 +50,7 @@ export class HomePageComponent implements OnInit, AfterViewInit {
     'email',
     'role',
     'registerTimestamp',
+    'registerAgo',
     'editOptions',
   ];
   dataSource: User[] = [];
