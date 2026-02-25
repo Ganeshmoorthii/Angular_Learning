@@ -43,23 +43,20 @@
       "agreeTerms": true
     },
     {
-      "id": "16df",
       "fullName": "Priya Sharma",
       "email": "priya@gmail.com",
-      "password": "Priya@5678",
-      "role": "Manager",
+      "password": "Priya@123",
+      "role": "Admin",
       "contactNumbers": [
         {
-          "type": "Mobile",
-          "number": "9988776655",
-          "isPrimary": true
+          "number": "9988776655"
         },
         {
-          "type": "Emergency",
-          "number": "9000000000",
-          "isPrimary": false
+          "number": "9000000000"
         }
-      ]
+      ],
+      "agreeTerms": true,
+      "id": "16df"
     }
   ]
 }

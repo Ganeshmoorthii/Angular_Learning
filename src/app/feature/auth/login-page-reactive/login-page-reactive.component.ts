@@ -1,4 +1,3 @@
-// e:\Audit Management System\Frontend\src\app\feature\auth\login-page\login-page.component.ts
 import { Component, inject } from '@angular/core';
 import {
   ReactiveFormsModule,
@@ -11,16 +10,14 @@ import {
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../../core/services/auth.service';
 import { Router } from '@angular/router';
-import { LoginPageTemplateComponent } from '../login-page-template/login-page-template.component';
 
 @Component({
-  selector: 'app-login-page',
-  standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, LoginPageTemplateComponent],
-  templateUrl: './login-page.component.html',
-  styleUrl: './login-page.component.scss',
+  selector: 'app-login-page-reactive',
+  imports: [ReactiveFormsModule, CommonModule],
+  templateUrl: './login-page-reactive.component.html',
+  styleUrl: './login-page-reactive.component.scss',
 })
-export class LoginPageComponent {
+export class LoginPageReactiveComponent {
   private authService = inject(AuthService);
   private router = inject(Router);
 

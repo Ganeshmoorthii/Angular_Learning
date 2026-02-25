@@ -1,0 +1,11 @@
+<ng-container>
+    <button class="btn btn-secondary m-3" (click)="toggleLoginMethod()">
+      Switch to {{ showReactive ? 'Template Driven' : 'Reactive' }} Forms 
+    </button>
+    @if(showReactive){
+        <app-login-page-reactive></app-login-page-reactive>
+    }
+    @else{
+        <app-login-page-template></app-login-page-template>
+    }
+</ng-container>
