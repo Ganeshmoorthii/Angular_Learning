@@ -2,6 +2,7 @@
     <button class="btn btn-secondary m-3" (click)="toggleLoginMethod()">
       Switch to {{ showReactive ? 'Template Driven' : 'Reactive' }} Forms 
     </button>
+    <button class="btn btn-primary m-3" (click)="navigateToRegister()">Redirect to Register Page</button>
     @if(showReactive){
         <app-login-page-reactive></app-login-page-reactive>
     }

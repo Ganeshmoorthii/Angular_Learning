@@ -50,6 +50,7 @@ export class RegisterPageComponent implements OnInit {
       ]],
       role: ['', [Validators.required]],
       contactNumbers: this.fb.array([]),
+      registerTimestamp: [''],
       agreeTerms: [false, [Validators.requiredTrue]],
     });
   }
@@ -138,6 +139,9 @@ export class RegisterPageComponent implements OnInit {
       this.registerForm.markAllAsTouched();
       return;
     }
+
+    const now = new Date().toISOString();
+    this.registerForm.patchValue({ registerTimestamp: now });
 
     const formValue = this.registerForm.value;
     const userData: any = {

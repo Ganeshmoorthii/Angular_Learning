@@ -44,9 +44,8 @@ export class HomePageComponent implements OnInit, AfterViewInit {
     'id',
     'fullName',
     'email',
-    'password',
     'role',
-    'contactNumbers',
+    'registerTimestamp',
     'editOptions',
   ];
   dataSource: User[] = [];
