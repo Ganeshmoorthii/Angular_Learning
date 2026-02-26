@@ -1,0 +1,57 @@
+<div class="login-container d-flex flex-column align-items-center justify-content-center">
+    <h5 class="login-title">Login Using Template Driven Forms</h5>
+    @if (errorMessage) {
+      <div class="alert alert-danger mt-2">
+        {{ errorMessage }}
+      </div>
+    }
+    <form class="login-form" #loginForm="ngForm" (ngSubmit)="onSubmit()">
+      <div class="form-group mt-2">
+        <label for="email">Email</label>
+        <div class="input-group flex-nowrap">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Email"
+            aria-label="Email"
+            aria-describedby="addon-wrapping"
+            name="email"
+            [(ngModel)]="LoginData.email"
+            required
+            email
+          />
+        </div>
+        @if (loginForm.submitted && email?.touched && email?.errors){
+          <span class="text-danger" *ngIf="email?.errors?.['required']"
+            >Email is required</span
+          >
+          <span class="text-danger" *ngIf="email?.errors?.['email']"
+            >Invalid email format</span
+          >
+        }
+      </div>
+      <div class="form-group mt-3">
+        <label for="password">Password</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          class="form-control"
+          placeholder="Enter your password"
+          [(ngModel)]="LoginData.password"
+          required
+        />
+        @if (loginForm.submitted && password?.errors) {
+          <span class="text-danger" *ngIf="password?.errors?.['required']"
+            >Password is required</span
+          >
+        }
+      </div>
+      <button
+        type="submit"
+        class="btn btn-primary mt-3" 
+      >
+        Login
+      </button>
+    </form>
+  </div>

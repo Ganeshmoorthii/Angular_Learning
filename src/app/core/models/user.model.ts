@@ -17,5 +17,7 @@ export interface RegisterRequest {
   email: string;
   password: string;
   role: string;
+  registerTimestamp: string;
+  registerAgo?: string;
   contactNumbers: string[];
 }

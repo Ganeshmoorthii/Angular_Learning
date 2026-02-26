@@ -23,10 +23,10 @@
   </ng-container>
 
   <!-- Password Column -->
-  <ng-container matColumnDef="password">
+  <!-- <ng-container matColumnDef="password">
     <th mat-header-cell *matHeaderCellDef>Password</th>
     <td mat-cell *matCellDef="let element">{{ element.password }}</td>
-  </ng-container>
+  </ng-container> -->
 
   <!-- Role Column -->
   <ng-container matColumnDef="role">
@@ -34,15 +34,27 @@
     <td mat-cell *matCellDef="let element">{{ element.role }}</td>
   </ng-container>
 
+  <!-- Register Time Column -->
+  <ng-container matColumnDef="registerTimestamp">
+    <th mat-header-cell *matHeaderCellDef>Register Time</th>
+    <td mat-cell *matCellDef="let element">{{ element.registerTimestamp | timestamp }}</td>
+  </ng-container>
+
+  <!-- Register Ago Column -->
+  <ng-container matColumnDef="registerAgo">
+    <th mat-header-cell *matHeaderCellDef></th>
+    <td mat-cell *matCellDef="let element">{{ element.registerTimestamp | timeago }}</td>
+  </ng-container>
+
   <!-- Contact Numbers Column -->
-  <ng-container matColumnDef="contactNumbers">
+  <!-- <ng-container matColumnDef="contactNumbers">
     <th mat-header-cell *matHeaderCellDef>Contact Numbers</th>
     <td mat-cell *matCellDef="let element">
       @for (contact of element.contactNumbers; track $index) {
         <div>{{ contact.number }}</div>
       }
     </td>
-  </ng-container>
+  </ng-container> -->
 
   <ng-container matColumnDef="editOptions">
     <th mat-header-cell *matHeaderCellDef>Edit Options</th>
@@ -120,7 +132,7 @@
    </ng-container> -->
 
   <!-- Examples for ContentChild() and ContentChildren() -->
-  <app-child>
+  <!-- <app-child>
     <h5>Child Component</h5>
     <p #paragraph>
       1. This content will be projected into the child component.
@@ -135,10 +147,10 @@
     <app-test [userName]="'Ramesh'"></app-test>
     <app-test [userName]="'Suresh'"></app-test>
     <app-test [userName]="'Dinesh'"></app-test>
-  </app-child>
+  </app-child> -->
 </section>
 
-<ng-container>
+<!-- <ng-container>
   <div class="data-list" id="container"></div>
   <button #createButton class="btn btn-primary">Create Button</button>
-</ng-container>
+</ng-container> -->
